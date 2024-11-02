@@ -1,10 +1,10 @@
 import express, { NextFunction, Request, Response, Router } from 'express'
-import { HomeController } from './controllers/home.controller'
-import { IBaseController } from './controllers/interfaces/controller.interfaces'
 import { HttpException } from './domain/exceptions/http.exception'
 import { NotFoundException } from './domain/exceptions/not-found.exception'
 import { ENV } from './shared/env.shared'
 import { showLogRoutePaths } from './shared/show-log-route-path.shared'
+import { IBaseController } from './interfaces'
+import UserUI from './three-layer/ui/user.ui'
 
 class Application {
   private app: express.Application
@@ -34,7 +34,7 @@ class Application {
   }
 
   private loadControllers() {
-    const controllers: IBaseController[] = [new HomeController()]
+    const controllers: IBaseController[] = [new UserUI()]
 
     controllers.forEach((controller: IBaseController) => {
       controller.initializeRoutes(this.appRouter)

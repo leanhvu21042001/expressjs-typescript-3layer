@@ -15,6 +15,7 @@ export default class UserUI implements IBaseController {
 
   public initializeRoutes(appRouter: Router) {
     appRouter.get(`${root}/save`, catchAsync(this.insertUser.bind(this)))
+    appRouter.get(`${root}/list`, catchAsync(this.getListUser.bind(this)))
   }
 
   async insertUser(req: Request, res: Response): Promise<Response> {
@@ -23,6 +24,14 @@ export default class UserUI implements IBaseController {
     return res.json({
       message: 'User created successfully',
       data: user
+    })
+  }
+
+  async getListUser(req: Request, res: Response): Promise<Response> {
+    const users = await this.userBus.getListUser()
+    return res.json({
+      message: 'List user successfully',
+      data: users
     })
   }
 }

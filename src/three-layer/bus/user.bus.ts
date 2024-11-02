@@ -9,4 +9,8 @@ export default class UserBus {
 
     return UserDao.insertUser(user)
   }
+
+  public getListUser() {
+    return UserDao.getListUser()
+  }
 }

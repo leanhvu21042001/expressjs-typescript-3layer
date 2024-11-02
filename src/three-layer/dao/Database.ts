@@ -14,5 +14,7 @@ export default class Database {
 
   protected static execute(query: string) {
     console.log('Database execute', query)
+
+    return query
   }
 }

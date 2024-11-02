@@ -21,4 +21,9 @@ export default class UserDao extends Database {
     const query = `SELECT * FROM users WHERE name = ${name}`
     return this.execute(query)
   }
+
+  public static async getListUser() {
+    const query = `SELECT * FROM users`
+    return this.execute(query)
+  }
 }
